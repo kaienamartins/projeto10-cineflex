@@ -1,15 +1,13 @@
 import Header from "./components/Header";
+import Home from "./components/Home";
 import GlobalStyle from "./Styles/GlobalStyle";
 
-function App() {
+export default function App() {
   return (
     <>
       <GlobalStyle/>
-      <Header>
-        
-      </Header>
+      <Header/>
+      <Home/>
     </>
   );
 }
-
-export default App;
