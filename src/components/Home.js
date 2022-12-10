@@ -57,8 +57,6 @@ const HeadingWrapper = styled.div`
 `;
 
 const MovieWrapper = styled.div`
-  position: fixed;
-  width: 375px;
   top: 150px;
   display: flex;
   flex-wrap: wrap;
