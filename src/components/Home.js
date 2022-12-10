@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Loading from "../assets/loading.gif";
 
 export default function Home() {
   const [images, setImages] = useState([]);
@@ -10,12 +11,11 @@ export default function Home() {
 
     const req = axios.get(URL);
 
-    req.then(res => {
-      setImages(res.data)
-      console.log(res.data)
+    req.then((res) => {
+      setImages(res.data);
     });
+    
   }, []);
-  
 
   return (
     <>
@@ -48,14 +48,14 @@ const HeadingWrapper = styled.div`
   }
 `;
 
-const MovieWrapper = styled.div `
+const MovieWrapper = styled.div`
   position: fixed;
   width: 375px;
   top: 150px;
   display: flex;
   flex-wrap: wrap;
 
-  img{
+  img {
     width: 129px;
     height: 193px;
     position: relative;
@@ -63,8 +63,4 @@ const MovieWrapper = styled.div `
     top: 25px;
     margin: 0 46px 27px 0;
   }
-`
-
-// const MovieCover = styled.image`
-  
-// `
+`;
