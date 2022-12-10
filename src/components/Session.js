@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import SessionMaker from "./SessionMaker";
+import Footer from "./Footer";
 
 export default function Session() {
   const { idMovie } = useParams();
@@ -30,6 +31,7 @@ export default function Session() {
       {movie.days.map((m) => (
         <SessionMaker movie={m} key={m.id} />
       ))}
+       <Footer poster={movie.posterURL} title={movie.title} />
     </Wrapper>
   );
 }
