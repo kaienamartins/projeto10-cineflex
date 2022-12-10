@@ -2,6 +2,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Loading from "../assets/loading.gif";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [images, setImages] = useState([]);
@@ -17,17 +18,24 @@ export default function Home() {
     
   }, []);
 
+  if(images.length === []) {
+		return <Loading/>;
+	}
+
   return (
     <>
       <HeadingWrapper>
         <h1>Selecione o filme</h1>
       </HeadingWrapper>
       <MovieWrapper>
-        {images.map(image => (
-          <img key={image.id} src={image.posterURL} alt={image.title}/>
-        ))}
+          {images.map(image => (
+            <Link to={`/sessoes/${image.id}`} key={image.id}>
+              <img src={image.posterURL} alt={image.title}/>
+            </Link>
+          ))}
       </MovieWrapper>
     </>
+
   );
 }
 
@@ -54,7 +62,6 @@ const MovieWrapper = styled.div`
   top: 150px;
   display: flex;
   flex-wrap: wrap;
-
   img {
     width: 129px;
     height: 193px;
