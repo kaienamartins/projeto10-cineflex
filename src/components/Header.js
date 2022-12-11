@@ -12,7 +12,6 @@ export default function Header(){
 }
 
 const Banner = styled.div `
-  display: block;
   position: fixed;
   top: 0;
   width: 375px;

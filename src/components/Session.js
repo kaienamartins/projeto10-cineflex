@@ -6,11 +6,11 @@ import SessionMaker from "./SessionMaker";
 import Footer from "./Footer";
 
 export default function Session() {
-  const { idMovie } = useParams();
+  const { idFilme } = useParams();
   const [movie, setMovie] = useState(undefined);
 
   useEffect(() => {
-    const URL = `https://mock-api.driven.com.br/api/v8/cineflex/movies/${idMovie}/showtimes`;
+    const URL = `https://mock-api.driven.com.br/api/v8/cineflex/movies/${idFilme}/showtimes`;
 
     const req = axios.get(URL);
 
@@ -19,7 +19,7 @@ export default function Session() {
     });
 
     req.catch((err) => console.log(err.response.data));
-  }, [idMovie]);
+  }, [idFilme]);
 
   if (!movie) {
     return <div>Carregando...</div>;
