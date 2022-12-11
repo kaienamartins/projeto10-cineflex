@@ -42,7 +42,11 @@ const MovieInfo = styled.div`
   justify-content: center;
   margin-left: 16px;
   font-size: 22px;
-  p:nth-child(1) {
+  p:nth-child(1), p:nth-child(2) {
     margin-left: 10px;
   }
+  p:nth-child(1) {
+    margin-bottom: 10px;
+  }
+  
 `;
