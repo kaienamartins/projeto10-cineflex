@@ -12,7 +12,7 @@ export default function SelectedColous() {
         <Buttons status="available" />
       </ButtonWrapper>
       <ButtonWrapper>
-        <p>Disponível</p>
+        <p>Indisponível</p>
         <Buttons status="unavailable" />
       </ButtonWrapper>
     </Wrapper>
