@@ -15,7 +15,6 @@ export default function Seat({ id, name, isAvailable, seatSelector, selected }) 
       </Button>
     );
   } else {
-    return (
       <Button
         onClick={() => seatSelector(id, name)}
         key={id}
@@ -24,7 +23,6 @@ export default function Seat({ id, name, isAvailable, seatSelector, selected }) 
       >
         {name}
       </Button>
-    );
   }
 }
 
