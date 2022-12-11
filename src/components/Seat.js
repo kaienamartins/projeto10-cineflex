@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function Seat({ id, name, isAvailable, selectSeat, selected }) {
+export default function Seat({ id, name, isAvailable, seatSelector, selected }) {
   const isSelected = selected.includes(id);
 
   if (isAvailable === false) {
@@ -8,7 +8,7 @@ export default function Seat({ id, name, isAvailable, selectSeat, selected }) {
       <Button
         onClick={() => alert("Esse assento não está disponível")}
         key={id}
-        color={"#FBE192"}
+        bgcolor={"#FBE192"}
         bordercolor={"#F7C52B"}
       >
         {name}
@@ -17,9 +17,9 @@ export default function Seat({ id, name, isAvailable, selectSeat, selected }) {
   } else {
     return (
       <Button
-        onClick={() => selectSeat(id, name)}
+        onClick={() => seatSelector(id, name)}
         key={id}
-        color={isSelected ? "#1AAE9E" : "#C3CFD9"}
+        bgcolor={isSelected ? "#1AAE9E" : "#C3CFD9"}
         bordercolor={isSelected ? "#0E7D71" : "#7B8B99"}
       >
         {name}
@@ -35,7 +35,7 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${(props) => props.color};
+  background-color: ${(props) => props.bgcolor};
   border: 1px solid ${(props) => props.bordercolor};
   border-radius: 12px;
   font-size: 11px;
