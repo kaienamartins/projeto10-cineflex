@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 import Seat from "./Seat";
+import Footer from "./Footer";
+import SelectedColous from "./SelectedColours";
 
 export default function Seats() {
   const { idSessao } = useParams();
@@ -20,16 +22,16 @@ export default function Seats() {
       setInfo({
         title: res.data.movie.title,
         posterURL: res.data.movie.posterURL,
-        time: res.data.name,
+        hour: res.data.name,
         day: res.data.day.weekday,
         date: res.data.day.date,
       });
     });
+
     req.catch((err) => {
       console.log(err.response.data);
     });
   }, [idSessao]);
-
 
   function seatSelector(id, name) {
     if (!selected.includes(id)) {
@@ -50,15 +52,13 @@ export default function Seats() {
     }
   }
 
-  
-
   return (
     <Wrapper>
       <h3>Selecione o(s) assento(s)</h3>
       <SeatsWrapper>
         {seats.map((seat) => (
           <Seat
-            id={seat.id}
+            key={seat.id}
             name={seat.name}
             isAvailable={seat.isAvailable}
             seatSelector={seatSelector}
@@ -66,6 +66,14 @@ export default function Seats() {
           />
         ))}
       </SeatsWrapper>
+      <SelectedColous/>
+      <Footer
+        title={info.title}
+        posterURL={info.posterURL}
+        weekday={info.weekday}
+        day={info.day}
+        hour={info.hour}
+      />
     </Wrapper>
   );
 }

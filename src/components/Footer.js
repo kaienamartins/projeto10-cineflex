@@ -1,15 +1,14 @@
 import styled from "styled-components";
 
-export default function Footer({ hour, weekday, title, poster }) {
+export default function Footer({ hour, day, title, posterURL }) {
   return (
     <Wrapper>
-      <img src={poster} alt={title} />
-
+      <img src={posterURL} alt={title} />
       <MovieInfo>
-        <p>{title}</p>
-        {weekday && hour && (
+        <h2>{title}</h2>
+        {day && hour && (
           <p>
-            {weekday} - {hour}
+            {day} - {hour}
           </p>
         )}
       </MovieInfo>
@@ -40,13 +39,20 @@ const MovieInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 16px;
-  font-size: 22px;
-  p:nth-child(1), p:nth-child(2) {
-    margin-left: 10px;
-  }
-  p:nth-child(1) {
-    margin-bottom: 10px;
-  }
+  margin-left: 35px;
+  padding-bottom: 15px;
   
+  h2, p {
+    font-family: "Roboto";
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 30px;
+    color: #293845;
+    white-space: nowrap;
+  }
+
+  p{
+    padding-top: 5px;
+  }
+
 `;

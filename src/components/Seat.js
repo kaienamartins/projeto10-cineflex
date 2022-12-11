@@ -29,8 +29,8 @@ export default function Seat({ id, name, isAvailable, selectSeat, selected }) {
 }
 
 const Button = styled.button`
-  height: 24px;
-  width: 24px;
+  height: 26px;
+  width: 26px;
   margin: 9px 4px;
   display: flex;
   align-items: center;

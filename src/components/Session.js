@@ -31,7 +31,7 @@ export default function Session() {
       {movie.days.map((m) => (
         <SessionMaker movie={m} key={m.id} />
       ))}
-       <Footer poster={movie.posterURL} title={movie.title} />
+       <Footer posterURL={movie.posterURL} title={movie.title} />
     </Wrapper>
   );
 }
