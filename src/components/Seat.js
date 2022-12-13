@@ -1,9 +1,26 @@
 import styled from "styled-components";
 
-export default function Seat({ id, name, isAvailable, seatSelector, selected }) {
+export default function Seat({
+  id,
+  name,
+  isAvailable,
+  seatSelector,
+  selected,
+}) {
   const isSelected = selected.includes(id);
 
-  if (isAvailable === false) {
+  if (isAvailable === true) {
+    return (
+      <Button
+        onClick={() => seatSelector(id, name)}
+        key={id}
+        bgcolor={isSelected ? "#1AAE9E" : "#C3CFD9"}
+        bordercolor={isSelected ? "#0E7D71" : "#7B8B99"}
+      >
+        {name}
+      </Button>
+    );
+  } else {
     return (
       <Button
         onClick={() => alert("Esse assento não está disponível")}
@@ -14,15 +31,6 @@ export default function Seat({ id, name, isAvailable, seatSelector, selected }) 
         {name}
       </Button>
     );
-  } else {
-      <Button
-        onClick={() => seatSelector(id, name)}
-        key={id}
-        bgcolor={isSelected ? "#1AAE9E" : "#C3CFD9"}
-        bordercolor={isSelected ? "#0E7D71" : "#7B8B99"}
-      >
-        {name}
-      </Button>
   }
 }
 

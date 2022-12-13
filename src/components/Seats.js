@@ -4,7 +4,6 @@ import axios from "axios";
 import styled from "styled-components";
 import Seat from "./Seat";
 import Footer from "./Footer";
-import SelectedColous from "./SelectedColours";
 
 export default function Seats() {
   const { idSessao } = useParams();
@@ -19,7 +18,6 @@ export default function Seats() {
   useEffect(() => {
     const URL = `https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${idSessao}/seats`;
     const req = axios.get(URL);
-
     req.then((res) => {
       setSeats(res.data.seats);
       setInfo({
@@ -36,19 +34,21 @@ export default function Seats() {
     });
   }, [idSessao]);
 
+
   function seatSelector(id, name) {
     if (!selected.includes(id)) {
       const newSelected = [...selected, id];
       setSelected(newSelected);
       const seatSelected = [...num, name];
       setNum(seatSelected);
+      console.log('funcionou')
     } else {
-      const i = selected.indexOf(id);
+      const index = selected.indexOf(id);
       const removeSeat = [...selected];
-      removeSeat.splice(i, 1);
+      removeSeat.splice(index, 1);
       setSelected(removeSeat);
       const removeNumber = [...num];
-      removeNumber.splice(i, 1);
+      removeNumber.splice(index, 1);
       setNum(removeNumber);
     }
   }
@@ -60,7 +60,7 @@ export default function Seats() {
       alert("Selecione seus assentos!");
       return;
     } else {
-      const URL =
+      const url =
         "https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many";
       const body = {
         ids: selected,
@@ -68,7 +68,7 @@ export default function Seats() {
         cpf: CPF,
       };
 
-      const request = axios.post(URL, body);
+      const request = axios.post(url, body);
 
       request
         .then(() => {
@@ -77,7 +77,7 @@ export default function Seats() {
               name: name,
               cpf: CPF,
               info: info,
-              seats: { ids: selected, numbers: num },
+              seats: { ids: selected},
             },
           });
         })
@@ -91,6 +91,7 @@ export default function Seats() {
       <SeatsWrapper>
         {seats.map((seat) => (
           <Seat
+            id={seat.id}
             key={seat.id}
             name={seat.name}
             isAvailable={seat.isAvailable}
@@ -99,7 +100,33 @@ export default function Seats() {
           />
         ))}
       </SeatsWrapper>
-      <SelectedColous />
+      <WrapperColour>
+        <ButtonWrapper>
+          <Buttons
+            selected={selected}
+            bgcolor={"#1AAE9E"}
+            bordercolor={"#0E7D71"}
+          ></Buttons>
+          <p>Selecionado</p>
+        </ButtonWrapper>
+        <ButtonWrapper>
+          <Buttons
+            selected={selected}
+            bgcolor={"#C3CFD9"}
+            bordercolor={"#7B8B99"}
+          ></Buttons>
+          <p>Disponível</p>
+        </ButtonWrapper>
+        <ButtonWrapper>
+          <Buttons
+            selected={selected}
+            bgcolor={"#FBE192"}
+            bordercolor={"#F7C52B"}
+          ></Buttons>
+          <p>Indisponível</p>
+        </ButtonWrapper>
+      </WrapperColour>
+
       <Form onSubmit={bookSeats}>
         <label htmlFor="Name">Nome do comprador:</label>
         <input
@@ -120,6 +147,7 @@ export default function Seats() {
           minLength="11"
           required
         />
+
         <button type="submit">Reservar assento(s)</button>
       </Form>
       <Footer
@@ -182,6 +210,7 @@ const Form = styled.form`
     border-radius: 3px;
     font-size: 18px;
     font-weight: 400;
+
     &::placeholder {
       font-style: italic;
       color: #afafaf;
@@ -200,4 +229,38 @@ const Form = styled.form`
     border-radius: 3px;
     align-self: center;
   }
+`;
+
+const WrapperColour = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  position: relative;
+  left: 25px;
+  justify-content: space-between;
+  margin: 10px;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p {
+    font-size: 15px;
+    font-family: "Roboto";
+    font-weight: 400;
+    line-height: 15.23px;
+    color: #4e5a65;
+  }
+`;
+
+const Buttons = styled.div`
+  height: 26px;
+  width: 26px;
+  margin: 9px 4px;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: ${(props) => props.bgcolor};
+  border: 1px solid ${(props) => props.bordercolor};
 `;

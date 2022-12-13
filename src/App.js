@@ -8,12 +8,12 @@ import Seats from "./components/Seats";
 export default function App() {
   return (
     <BrowserRouter>
-      <GlobalStyle/>
-      <Header/>
+      <GlobalStyle />
+      <Header />
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/sessoes/:idFilme" element={<Session/>}/>
-        <Route path="/assentos/:idSessao" element={<Seats/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/sessoes/:idFilme" element={<Session />} />
+        <Route path="/assentos/:idSessao" element={<Seats />} />
       </Routes>
     </BrowserRouter>
   );
