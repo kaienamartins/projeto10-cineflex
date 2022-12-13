@@ -12,6 +12,7 @@ export default function Seat({
   if (isAvailable === true) {
     return (
       <Button
+        data-test="seat"
         onClick={() => seatSelector(id, name)}
         key={id}
         bgcolor={isSelected ? "#1AAE9E" : "#C3CFD9"}
@@ -23,6 +24,7 @@ export default function Seat({
   } else {
     return (
       <Button
+        data-test="seat"
         onClick={() => alert("Esse assento não está disponível")}
         key={id}
         bgcolor={"#FBE192"}
