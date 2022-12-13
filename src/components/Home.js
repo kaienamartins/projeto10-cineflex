@@ -27,7 +27,7 @@ export default function Home() {
       <HeadingWrapper>
         <h1>Selecione o filme</h1>
       </HeadingWrapper>
-      <MovieWrapper>
+      <MovieWrapper data-test="movie" >
           {images.map(image => (
             <Link to={`/sessoes/${image.id}`} key={image.id}>
               <img src={image.posterURL} alt={image.title}/>

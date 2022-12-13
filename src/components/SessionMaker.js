@@ -3,12 +3,12 @@ import styled from "styled-components";
 
 export default function SessionMaker({ movie }) {
   return (
-    <Wrapper>
+    <Wrapper data-test="movie-day">
       {movie.weekday} - {movie.date}
       <Showtime>
         {movie.showtimes.map((st) => (
           <Link to={`/assentos/${st.id}`} key={st.name}>
-            <button>{st.name}</button>
+            <button data-test="showtime">{st.name}</button>
           </Link>
         ))}
       </Showtime>

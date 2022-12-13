@@ -91,6 +91,7 @@ export default function Seats() {
       <SeatsWrapper>
         {seats.map((seat) => (
           <Seat
+            data-test="seat"
             id={seat.id}
             key={seat.id}
             name={seat.name}
@@ -130,6 +131,7 @@ export default function Seats() {
       <Form onSubmit={bookSeats}>
         <label htmlFor="Name">Nome do comprador:</label>
         <input
+          data-test="client-name"
           type="text"
           id="Name"
           placeholder="Digite seu nome..."
@@ -139,6 +141,7 @@ export default function Seats() {
         />
         <label htmlFor="CPF">CPF do comprador:</label>
         <input
+          data-test="client-cpf"
           type="text"
           id="CPF"
           placeholder="Digite seu CPF..."
@@ -148,7 +151,7 @@ export default function Seats() {
           required
         />
 
-        <button type="submit">Reservar assento(s)</button>
+        <button data-test="book-seat-btn" type="submit">Reservar assento(s)</button>
       </Form>
       <Footer
         title={info.title}

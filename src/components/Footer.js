@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export default function Footer({ hour, day, title, posterURL }) {
   return (
-    <Wrapper>
+    <Wrapper data-test="footer">
       <img src={posterURL} alt={title} />
       <MovieInfo>
         <h2>{title}</h2>
