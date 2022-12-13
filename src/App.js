@@ -4,6 +4,7 @@ import GlobalStyle from "./Styles/GlobalStyle";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Session from "./components/Session";
 import Seats from "./components/Seats";
+import Success from "./components/Success";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/sessoes/:idFilme" element={<Session />} />
         <Route path="/assentos/:idSessao" element={<Seats />} />
+        <Route path="/sucesso" element={<Success />} />
       </Routes>
     </BrowserRouter>
   );

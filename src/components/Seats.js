@@ -34,14 +34,13 @@ export default function Seats() {
     });
   }, [idSessao]);
 
-
   function seatSelector(id, name) {
     if (!selected.includes(id)) {
       const newSelected = [...selected, id];
       setSelected(newSelected);
       const seatSelected = [...num, name];
       setNum(seatSelected);
-      console.log('funcionou')
+      console.log("funcionou");
     } else {
       const index = selected.indexOf(id);
       const removeSeat = [...selected];
@@ -77,7 +76,7 @@ export default function Seats() {
               name: name,
               cpf: CPF,
               info: info,
-              seats: { ids: selected},
+              seats: { ids: selected },
             },
           });
         })
@@ -151,7 +150,9 @@ export default function Seats() {
           required
         />
 
-        <button data-test="book-seat-btn" type="submit">Reservar assento(s)</button>
+        <button data-test="book-seat-btn" type="submit">
+          Reservar assento(s)
+        </button>
       </Form>
       <Footer
         title={info.title}

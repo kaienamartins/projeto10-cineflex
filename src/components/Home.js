@@ -27,10 +27,10 @@ export default function Home() {
       <HeadingWrapper>
         <h1>Selecione o filme</h1>
       </HeadingWrapper>
-      <MovieWrapper data-test="movie" >
+      <MovieWrapper>
           {images.map(image => (
             <Link to={`/sessoes/${image.id}`} key={image.id}>
-              <img src={image.posterURL} alt={image.title}/>
+              <img data-test="movie" src={image.posterURL} alt={image.title}/>
             </Link>
           ))}
       </MovieWrapper>
