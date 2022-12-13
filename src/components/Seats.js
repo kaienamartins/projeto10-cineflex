@@ -87,7 +87,7 @@ export default function Seats() {
   return (
     <Wrapper>
       <h3>Selecione o(s) assento(s)</h3>
-      <SeatsWrapper>
+      <SeatsWrapper data-test="seat">
         {seats.map((seat) => (
           <Seat
             data-test="seat"

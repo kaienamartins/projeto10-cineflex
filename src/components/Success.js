@@ -14,30 +14,32 @@ export default function Success() {
 
   return (
     <Wrapper>
-      <Heading><h1>Pedido feito <br/> com sucesso!</h1></Heading>
-      <MovieInfo>
-        <MovieInfo data-test="movie-info" >
-          <h3>Filme e sessão</h3>
-          <p>{title}</p>
-          <p>
-            {date} {hour}
-          </p>
-        </MovieInfo>
-        <MovieInfo data-test="seats-info">
-          <h3>Ingressos</h3>
-          {ids.map((num, i) => (
-            <p key={i}>Assento {num}</p>
-          ))}
-        </MovieInfo>
-        <MovieInfo data-test="client-info">
-          <h3>Comprador</h3>
-          <p>Nome: {name}</p>
-          <p>CPF: {cpf}</p>
-        </MovieInfo>
+      <Heading>
+        <h1>
+          Pedido feito <br /> com sucesso!
+        </h1>
+      </Heading>
+      <MovieInfo data-test="movie-info">
+        <h3>Filme e sessão</h3>
+        <p>{title}</p>
+        <p>
+          {date} {hour}
+        </p>
+      </MovieInfo>
+      <MovieInfo data-test="seats-info">
+        <h3>Ingressos</h3>
+        {ids.map((num, i) => (
+          <p key={i}>Assento {num}</p>
+        ))}
+      </MovieInfo>
+      <MovieInfo data-test="client-info">
+        <h3>Comprador</h3>
+        <p>Nome: {name}</p>
+        <p>CPF: {cpf}</p>
       </MovieInfo>
 
-      <Link to={`/`}>
-        <Button data-test="go-home-btn">Voltar pra Home</Button>
+      <Link to={`/`} data-test="go-home-btn">
+        <Button>Voltar pra Home</Button>
       </Link>
     </Wrapper>
   );
@@ -58,13 +60,13 @@ const Heading = styled.div`
   align-items: center;
   position: relative;
   top: 65px;
-  
+
   h1 {
     color: #247a6b;
     font-size: 24px;
     font-weight: 700;
     line-height: 28px;
-    letter-spacing: 0.04em;;
+    letter-spacing: 0.04em;
   }
 `;
 
